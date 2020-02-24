@@ -23,8 +23,11 @@ Kenzie Assignment: String2
 
 
 def verbing(s):
-    # your code here
-    return
+    if len(s) < 3:
+        return s
+    if s.endswith('ing'):
+        return s + 'ly'
+    return s + 'ing'
 
 
 # E. not_bad
@@ -36,8 +39,11 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-    # your code here
-    return
+    n = s.find('not')
+    b = s.find('bad')
+    if n > 0 and n < b:
+        return s[0:n] + 'good' + s[b+3:]
+    return s
 
 
 # F. front_back
@@ -48,18 +54,25 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    # your code here
-    return
-
+    middle_a = len(a) / 2
+    middle_b = len(b) / 2
+    if len(a) % 2 == 1:
+        middle_a += 1
+    if len(b) % 2 == 1:
+        middle_b += 1
+    return a[0:middle_a] + b[0:middle_b] + a[middle_a] + b[middle_b]
 
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
+
+
 def test(got, expected):
     if got == expected:
         prefix = ' OK '
     else:
         prefix = '  X '
-    print('{} got: {}     expected: {}'.format(prefix, repr(got), repr(expected)))
+    print('{} got: {}     expected: {}'.format(
+        prefix, repr(got), repr(expected)))
 
 
 # main() calls the above functions with interesting inputs,
