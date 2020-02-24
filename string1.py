@@ -26,19 +26,21 @@ Kenzie assignment: String1
 
 
 def donuts(count):
-    # your code here
-    return
-
+    if count >= 10:
+        return 'Number of donuts: many'
+    return 'Number of donuts: ' + str(count)
 
 # B. both_ends
 # Given a string s, return a string made of the first 2
 # and the last 2 chars of the original string,
 # so 'spring' yields 'spng'. However, if the string length
 # is less than 2, return instead the empty string.
-def both_ends(s):
-    # your code here
-    return
 
+
+def both_ends(s):
+    if len(s) < 2:
+        return ''  # I think it said to return an empty string?
+    return s[:2] + s[-2:]
 
 # C. fix_start
 # Given a string s, return a string
@@ -49,9 +51,10 @@ def both_ends(s):
 # Assume that the string is length 1 or more.
 # Hint: s.replace(stra, strb) returns a version of string s
 # where all instances of stra have been replaced by strb.
+
+
 def fix_start(s):
-    # your code here
-    return
+    return s[0] + s.replace(s[0], '*')[1:]
 
 
 # D. MixUp
@@ -62,8 +65,7 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-    # your code here
-    return
+    return b[0:2] + a[2:] ' ' + a[0:2] + b[2:]
 
 
 # Provided simple test() function used in main() to print
@@ -73,7 +75,8 @@ def test(got, expected):
         prefix = ' OK '
     else:
         prefix = '  X '
-    print('{} got: {}    expected: {}'.format(prefix, repr(got), repr(expected)))
+    print('{} got: {}    expected: {}'.format(
+        prefix, repr(got), repr(expected)))
 
 
 # The main() func calls the above functions with interesting inputs,
